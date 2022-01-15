@@ -19,16 +19,14 @@
 
 // Recursioning
 // In a seminal paper, the Church-Turing Thesis proves that any iterative function can be reproduced with a recursive one, and vice versa. Sometimes, a recursive approach is cleaner, clearer, and more elegant. 
-const reverseFunc = string => {
-    return string.split('').reverse().join('')
+
+function countDown(n) {
+    console.log(n);
+    countDown(n - 1);
 }
-console.log(reverseFunc('hello'));
+countDown(3);
 
 // At a high level, there are basically three types of data structures. Stacks and Queues are array-like structures that differ only in how items are inserted and removed. Linked Lists, Trees, and Graphs are structures with nodes that keep references to other nodes. Hash Tables depend on hash functions to save and locate data.
-
-//Version Control System is a server that keeps track of all the changes made to a file.
-// Git is a version control system that allows you to keep track of all the changes made to a file.
-// Git is a distributed version control system that allows you to keep track of all the changes made to a file.
 
 //Binary Tree Example
 
