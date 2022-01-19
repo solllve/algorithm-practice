@@ -19,18 +19,26 @@
 
 // Recursioning
 // In a seminal paper, the Church-Turing Thesis proves that any iterative function can be reproduced with a recursive one, and vice versa. Sometimes, a recursive approach is cleaner, clearer, and more elegant. 
-let i = 0
-function recurse() {
-    i++
-    console.log(i)
-    if (i === 3) {
-        // stop calling itself
-        //...
-    } else {
-        recurse();
+
+function countDown(n) {
+    console.log(n);
+    let nextNumber = n - 1;
+    if (nextNumber > 0) {
+        countDown(nextNumber);
     }
 }
-recurse()
+countDown(3);
+
+//Calculate the sum of n natural numbers
+
+function sum(n) {
+    if (n <= 1) {
+      return n;
+    }
+    return n + sum(n - 1);
+}
+
+sum(5)
 
 // At a high level, there are basically three types of data structures. Stacks and Queues are array-like structures that differ only in how items are inserted and removed. Linked Lists, Trees, and Graphs are structures with nodes that keep references to other nodes. Hash Tables depend on hash functions to save and locate data.
 
@@ -160,4 +168,75 @@ strs = ['flower', 'flow', 'flight']
 
 const longestCommonPrefix = (strs) => {
     return strs
+}
+
+
+// First and last index in sorted array
+// use a hash table
+const firstAndLastIndex = arr => {
+    let hash = {};
+    let first = 0;
+    let last = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (hash[arr[i]]) {
+            hash[arr[i]]++;
+        } else {
+            hash[arr[i]] = 1;
+        }
+    }
+}
+const array = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+]
+firstAndLastIndex(array)
+
+// Kth largest element
+// Symmetric tree
+// Generate parentheses
+// Gas station
+// Course schedule
+// Kth permutation
+// Minimum window substring
+// Largest rectangle in histogram
+
+//O(N) Linear Search
+const linearSearch = (arr, target) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (target === arr[i]) {
+            return i;
+            console.log(i)
+        }
+    }
+    return -1;
+}
+
+//Binary Search is O(log2n)
+const binary = (arr, target) => {
+    let lower = 0;
+    let upper = arr.length - 1;
+    while(lower <= upper) {
+        //check middle 
+        console.log('try')
+        const middle = lower + Math.floor((upper - lower) / 2)
+        if (target === arr[middle]) {
+            return middle;
+        }
+        if (target < arr[middle]) {
+            //left side
+            upper = middle - 1;
+        }
+        else {
+            lower = middle + 1
+        }
+    }
+    return -1
 }
