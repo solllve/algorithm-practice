@@ -240,3 +240,63 @@ const binary = (arr, target) => {
     }
     return -1
 }
+
+//recursive and iterative
+
+//binary search only works with sorted arrays
+
+let nums = [2,7,8,10,13,17,19,21]
+
+const iterativeBinary = (array, target) => {
+    // define left and right
+    let left = 0;
+    let right = array.length - 1;
+    while(left < right) {
+        let mid = Math.floor(left + right) / 2
+        if (target === array[mid]) {
+            //if its in mid
+            return mid;
+        }
+        else if (target < array[mid]) {
+            //check left
+            right = mid - 1;
+            // we don't need to check right
+        }
+        else {
+            left = mid + 1;
+            // we don't need to check left
+        }
+    }
+    return false
+}
+
+console.log(iterativeBinary(nums, 17))
+
+// Time complexity: o(log(n), space complexity: o(1)
+
+//recursive
+function binarySearchRecursive(array, target) {
+    // array , target, left, right
+    return binarySearchHelper(array, target, 0, array.length - 1);
+
+}
+
+const binarySearchHelper = (array, target, left, right) => {
+    if (left > right) {
+        return false;
+    }
+    let mid = Math.floor((left + right) / 2);
+    if (target === array[mid]) {
+        return mid;
+    }
+    else if (target < array[mid]) {
+        return binarySearchHelper(array, target, left, mid - 1)
+    }
+    else {
+        return binarySearchHelper(array, target, mid + 1, right)
+    }
+}
+
+console.log(binarySearchRecursive(nums, 7))
+
+// Time complexity O(log(n)), space complexity O(log(n))
